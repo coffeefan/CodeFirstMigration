@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>reveal.js - The HTML Presentation Framework</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>Code First Migration</h1>
+					<p>
+                        <small>Eine Präsentation der ZHAW</small><br/>
+						<small>Student <a href="http://www.christianbachmann.ch">Christian Bachmann</a></small>
+					</p>
+				</section>
+
+                <section>
+                <h2>Agenda</h2>
+                    <p><ul>
+                    <li>Ausgangslage</li>
+                    <li>Erwartungen des Zielpublikums </li>
+                    <li>Ziele</li>
+                    <li>Erwartete Resultate</li>
+                    <li>Vorgehen</li>
+                    <li>Grobplanung</li>
+                    <li>Diskussion</li>
+
+                    </ul>
+                    </p>
+
+                </section>
+                <section>
+                    <h2>Code First</h2>
+                    <p>
+                    <ul>
+                        <li>Erstelle Poco-Klassen</li>
+                        <li>Erstelle Datenbank mit Models models</li>
+                    </ul>
+                    </p>
+
+                </section>
+                <section>
+                    <section>
+                        <h1>Migration</h1>
+                    </section>
+                    <section>
+                        <h2>Held</h2>
+                        <p>
+                            <img src="img/steve-ballmer-superman.jpg" />
+                        </p>
+                    </section>
+                    <section>
+                        <h2>Held</h2>
+                        <p>
+                            <img src="img/superman-onesie.jpg" width="300px"/>
+                        </p>
+                    </section>
+				</section>
+
+				<!-- Example of nested vertical slides -->
+				<section>
+
+                    <section>
+                        <h2>Migrations</h2>
+                        <p>
+                            <ul>
+                                <li>Automatisch
+                                </li>
+                                <li>Code - Based
+                                </li>
+                            </ul>
+                        </p>
+                    </section>
+                    <section>
+                        <h2>Migrations</h2>
+                        <p>
+                        <ul>
+                            <li>Automatisch<ul>
+                                <li>Gut für Design & Entwicklung von Datenbank</li>
+                                <li>Schlecht für Produktion</li>
+                                <li>Minimales Change Tracking</li>
+                            </ul>
+                            </li>
+
+                        </ul>
+                        </p>
+                    </section>
+                    <section>
+                        <h2>Migrations</h2>
+                        <p>
+                        <ul>
+                            <li>Code - Based<ul>
+                                <li>Code wird generiert umd Datenbank zu erstellen/ zu ändern</li>
+                                <li>Gut für Design & Entwicklung von Datenbank</li>
+                                <li>Durch Deaktivieren Produktion sicher machen</li>
+                                <li>Umfangreiches Tracking von Datenbankänderungen</li>
+                            </ul>
+                            </li>
+                        </ul>
+                        </p>
+                    </section>
+				</section>
+
+                <section>
+                    <section>
+                        <h2>Enable-Migrations</h2>
+
+                            <pre><code data-trim>
+                                PM> enable-migrations
+                            </code></pre>
+
+                    </section>
+                    <section>
+                        <h2>Enable-Migrations</h2>
+
+                            <pre><code data-trim>
+                                PM> enable-migrations
+                            </code></pre>
+                        <p><ul>
+                        <li>Generiert Configurations.cs<ul>
+                            <li>Einstellungen</li>
+                            <li>Seed method</li>
+                        </ul></li>
+                    </ul></p>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Add-Migrations</h2>
+
+                            <pre><code data-trim>
+                                PM> Add-Migration Migration Name
+                            </code></pre>
+
+                    </section>
+                    <section>
+                        <h2>Enable-Migrations</h2>
+
+                            <pre><code data-trim>
+                                PM> Add-Migration Migration Name
+                            </code></pre>
+                        <p><ul>
+                        <li>Generiert MigrationName.cs<ul>
+                            <li>Up()</li>
+                            <li>Down()</li>
+                        </ul></li>
+                    </ul></p>
+                    </section>
+                </section>
+
+
+                <section>
+                    <h2>Update Database</h2>
+                    <pre><code data-trim>
+                        Update-Database -Verbose
+                    </code></pre>
+                    <p>
+                        Script auf Datenbank ausführen
+                    </p>
+                </section>
+                <section>
+                    <h2>Update Database</h2>
+                    <pre><code data-trim>
+                        Update-Database -TargetMigration InitialCreate
+                    </code></pre>
+                    <p>
+                        Migration zu spezifischem script
+                    </p>
+                </section>
+                <section>
+                    <h1>Fragen?</h1>
+                </section>
+
+				<section>
+                    <p></p>
+					<p>Die Präsentation kann als PDF exportiert werden.<br/>
+                        <a href="index.html?print-pdf" target="_blank">Druckansicht</a>
+                    </p>
+
+				</section>
+
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

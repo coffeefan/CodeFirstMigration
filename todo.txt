@@ -1,0 +1,38 @@
+web.config
+<add name="BobbyCarContext" connectionString="Data Source=cbsus\sqlexpress; Initial Catalog=bobbycar; Integrated Security=True; MultipleActiveResultSets=True" providerName="System.Data.SqlClient" />
+unter Models/IdentityModels
+BobbyCarContext
+
+Registration, cbwerbung@inaffect.net, !Password23
+enable-migrations
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace Demo.Models
+{
+    public class Participant
+    {
+        public int ParticipantId { get; set; }
+        public String Vorname { get; set; }
+        public String Nachname { get; set; }
+
+    }
+}
+
+Build!!!
+
+Add-Migration
+
+Update-Database -Verbose
+
+Update-Database -TargetMigration InitialCreate
+
+Update-Database -Verbose
+public int test { get; set; }
+
+Add-Migration
+
+Update-Database -Verbose
